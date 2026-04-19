@@ -16,7 +16,7 @@ g = 9.81 # m/s^2
 
 # deklarasi variabel dinamis
 
-slope = 30 # degree # derajat kemiringan jalan, bisa diubah sesuai kebutuhan
+slope = 0 # degree # derajat kemiringan jalan, bisa diubah sesuai kebutuhan
 
 throtle = 100 # persen
 v0 = 0 # m/s
