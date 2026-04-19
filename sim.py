@@ -16,7 +16,7 @@ g = 9.81 # m/s^2
 
 # deklarasi variabel dinamis
 
-slope = 0 # degree # derajat kemiringan jalan, bisa diubah sesuai kebutuhan
+slope = 20 # degree # derajat kemiringan jalan, bisa diubah sesuai kebutuhan
 
 throtle = 100 # persen
 v0 = 0 # m/s
@@ -50,6 +50,20 @@ def PID_controller(v, t, setpoint):
     output = Kp * error + Ki * integral + Kd * derivative
     return output
 
+# fungsi print setiap data
+def pr(array1, array2, array3, array4):
+    print(f'waktu\t\tv dengan\tu dengan\tv tanpa\t\tu tanpa\n{'='*71}')
+    loop = 0
+    lp = 0
+    print(f'{array1[loop]}\t\t{(array2[loop]):.2f}\t\t{(array3[loop]):.2f}\t\t{(array4[loop]):.2f}\t\t{Fcar:.2f}')
+    for i in array1:
+        if lp == 10:
+            print(f'{i:.2f}\t\t{(array2[loop]):.2f}\t\t{(array3[loop]):.2f}\t\t{(array4[loop]):.2f}\t\t{Fcar:.2f}')
+            lp = 0
+        lp += 1
+        loop += 1
+
+
 # simulasi akselerasi mobil
 for i in range(1, len(t)):
     dt = t[i] - t[i-1]
@@ -64,6 +78,9 @@ for i in range(1, len(t)):
     u_sim.append(u)
     v_pid = v_sim_PID[-1] + ace(v_sim_PID[-1], t[i], u, np.radians(slope)) * dt 
     v_sim_PID.append(v_pid)
+
+# print hasil data yang disimulasikan
+print(f'{pr(t_sim, v_sim_PID, u_sim, v_sim)}')
 
 # visualisasi hasil simulasi
 plt.style.use('bmh')
