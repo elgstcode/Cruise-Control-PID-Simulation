@@ -1,7 +1,7 @@
 # program bekerja pakai sistem operasi windows dan linux, pastikan sudah terinstall python dan pip/pip3 di komputer anda
 # jika library-nya belum terinstall, install dulu dengan perintah berikut di terminal: 
 # windows: pip install matplotlib numpy
-# linux: pip3 install matplotlib numpy
+# linux: sudo apt update && sudo apt upgrade && sudo pip3 install matplotlib numpy
 import matplotlib.pyplot as plt
 import numpy as np
 
